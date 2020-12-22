@@ -38,13 +38,18 @@ namespace northwind.Controllers
             db.Customers.Remove(customer);
             db.SaveChanges();
             */
-            Customers prod = db.Customers.FirstOrDefault(m => m.CustomerID==id);
+            Customers prod = db.Customers.FirstOrDefault(m => m.CustomerID == id);
             if (prod != null)
             {
                 db.Customers.Remove(prod);
                 db.SaveChanges();
             }
             return RedirectToAction("List");
+        }
+        public ActionResult Details(string id)
+        {
+            var customer = db.Customers.Where(m => m.CustomerID == id).FirstOrDefault();
+            return View(customer);
         }
         public ActionResult Edit(string id)
         {
@@ -71,6 +76,12 @@ namespace northwind.Controllers
             }
             return RedirectToAction("List");
         }
-
+        public ActionResult Search(string keyword)
+        {
+            var result = (from customer in db.Customers
+                     where customer.CompanyName.Contains(keyword)
+                     select customer).ToList();
+            return View(result);
+        }
     }
 }
