@@ -4,17 +4,28 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>所有客戶列表</h2>
-<form class="form-inline" action="Search">
-    <input class="form-control mr-sm-2" type="text" placeholder="請輸入查詢公司名" name="keyword">
-    <button class="btn btn-success" type="submit">Search</button>
+<br>
+<form class="form-inline my-2 my-lg-0" action="Search">
+    <select class="form-control" aria-label="Default select example" name="category">
+        <option value="">請選擇類別</option>
+        <option>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </option>
+        <option>
+            @Html.DisplayNameFor(model => model.Country)
+        </option>
+        <option>
+            @Html.DisplayNameFor(model => model.Phone)
+        </option>
+    </select>
+    <input class="form-control mr-sm-2" type="text" placeholder="請輸入關鍵字" name="keyword" aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
 </form>
 <br>
 <p>
     @Html.ActionLink("新增客戶", "Create")
 </p>
-
 <table class="table">
     <tr>
         <th>
@@ -90,5 +101,4 @@
             </td>
         </tr>
     }
-
 </table>

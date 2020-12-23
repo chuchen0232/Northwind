@@ -79,10 +79,31 @@ namespace northwind.Controllers
         }
         public ActionResult Search(string category,string keyword)
         {
-            var result = (from customer in db.Customers
-                          where customer.CompanyName.Contains(keyword)
-                          select customer).ToList();
-            return View(result);
+            if(category== "CompanyName")
+            {
+                var result = (from customer in db.Customers
+                              where customer.CompanyName.Contains(keyword)
+                              select customer).ToList();
+                return View(result);
+            }
+            else if(category== "Country")
+            {
+                var result = (from customer in db.Customers
+                              where customer.Country.Contains(keyword)
+                              select customer).ToList();
+                return View(result);
+            }
+            else if (category == "Phone")
+            {
+                var result = (from customer in db.Customers
+                              where customer.Phone.Contains(keyword)
+                              select customer).ToList();
+                return View(result);
+            }
+            else
+            {
+                return RedirectToAction("List");
+            }
         }
     }
 }
