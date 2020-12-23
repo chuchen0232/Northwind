@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Linq.Dynamic;
+using System.Linq.Expressions;
 namespace northwind.Controllers
 {
     public class CustomerController : Controller
@@ -76,11 +77,11 @@ namespace northwind.Controllers
             }
             return RedirectToAction("List");
         }
-        public ActionResult Search(string keyword)
+        public ActionResult Search(string category,string keyword)
         {
             var result = (from customer in db.Customers
-                     where customer.CompanyName.Contains(keyword)
-                     select customer).ToList();
+                          where customer.CompanyName.Contains(keyword)
+                          select customer).ToList();
             return View(result);
         }
     }

@@ -182,3 +182,4 @@ E:\northwind\northwind\northwind\obj\Debug\northwind.csproj.CoreCompileInputs.ca
 E:\northwind\northwind\northwind\obj\Debug\northwind.csproj.CopyComplete
 E:\northwind\northwind\northwind\obj\Debug\northwind.dll
 E:\northwind\northwind\northwind\obj\Debug\northwind.pdb
+E:\northwind\northwind\northwind\bin\System.Linq.Dynamic.dll
